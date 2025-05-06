@@ -1,0 +1,14 @@
+[Unit]
+Description=Start graphical installer with X
+After=network.target
+
+[Service]
+User=root
+Environment=DISPLAY=:0
+ExecStart=/usr/bin/xinit /usr/bin/install-os -- /usr/bin/X :0
+StandardOutput=journal
+StandardError=journal
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
